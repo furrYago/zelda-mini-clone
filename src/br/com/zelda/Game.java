@@ -4,7 +4,6 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
@@ -18,13 +17,13 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	public static int WIDTH = 480, HEIGHT = 480;
 	public Player player;
 	public World world;
-	public static ImageIcon icon = new ImageIcon("C:/Users/yago/Downloads/link.jpg");
 
 	public Game() {
 		this.addKeyListener(this);
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		player = new Player(32, 32);
 		world = new World();
+		new Spritesheet();
 	}
 
 	@Override
@@ -51,7 +50,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		}
 
 		Graphics g = bs.getDrawGraphics();
-		g.setColor(Color.BLACK);
+		g.setColor(new Color(0, 135, 13));
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 
 		world.render(g);
@@ -68,7 +67,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		frame.setTitle("VAI TAKE NO COOL");
 		frame.setResizable(false);
 		frame.setUndecorated(true);
-		frame.setIconImage(icon.getImage());
+		frame.setIconImage(new ImageIcon("/zelda-mini-clone/res/link.jpg").getImage());
 
 		frame.pack();
 

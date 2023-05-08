@@ -1,6 +1,5 @@
 package br.com.zelda;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -27,8 +26,9 @@ public class Player extends Rectangle {
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.GREEN);
-		g.fillRect(x, y, width, height);
+//		g.setColor(Color.GREEN);
+//		g.fillRect(x, y, width, height);
+		g.drawImage(Spritesheet.playerFront, x, y, 32, 32, null);
 	}
 
 }
