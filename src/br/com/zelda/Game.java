@@ -14,7 +14,8 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class Game extends Canvas implements Runnable, KeyListener {
 
-	public static int WIDTH = 480, HEIGHT = 480;
+	public static int WIDTH = 640, HEIGHT = 480;
+	public static int SCALE = 3;
 	public Player player;
 	public World world;
 
@@ -51,7 +52,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
 		Graphics g = bs.getDrawGraphics();
 		g.setColor(new Color(0, 135, 13));
-		g.fillRect(0, 0, WIDTH, HEIGHT);
+		g.fillRect(0, 0, WIDTH * SCALE, HEIGHT * SCALE);
 
 		world.render(g);
 		player.render(g);
@@ -66,8 +67,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		frame.add(game);
 		frame.setTitle("VAI TAKE NO COOL");
 		frame.setResizable(false);
-		frame.setUndecorated(true);
-		frame.setIconImage(new ImageIcon("/zelda-mini-clone/res/link.jpg").getImage());
+		frame.setUndecorated(false);
+		frame.setIconImage(new ImageIcon("res/link.jpg").getImage());
 
 		frame.pack();
 
@@ -95,6 +96,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 			player.up = true;
 		else if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S)
 			player.down = true;
+		else if (e.getKeyCode() == KeyEvent.VK_Z)
+			player.shoot = true;
 	}
 
 	@Override
@@ -108,5 +111,6 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		else if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S)
 			player.down = false;
 	}
+	
 
 }
