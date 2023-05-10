@@ -8,8 +8,7 @@ import javax.imageio.ImageIO;
 public class Spritesheet {
 
 	public static BufferedImage spritesheet, tileWall;
-	public static BufferedImage[] playerAnimation;
-	public static BufferedImage[] enemyAnimation;
+	public static BufferedImage[] playerAnimation, enemyAnimation;
 
 	public Spritesheet() {
 		try {
@@ -20,8 +19,8 @@ public class Spritesheet {
 			playerAnimation[0] = Spritesheet.getSprite(0, 11, 16, 16);
 			playerAnimation[1] = Spritesheet.getSprite(16, 11, 16, 16);
 
-			enemyAnimation[0] = Spritesheet.getSprite(299, 222, 16, 16);
-			enemyAnimation[1] = Spritesheet.getSprite(327, 222, 16, 16);
+			enemyAnimation[0] = Spritesheet.getSprite(300, 222, 16, 16);
+			enemyAnimation[1] = Spritesheet.getSprite(316, 222, 16, 16);
 
 			tileWall = Spritesheet.getSprite(280, 221, 16, 16);
 		} catch (IOException e) {
