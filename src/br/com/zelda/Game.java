@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -16,14 +18,20 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
 	public static int WIDTH = 640, HEIGHT = 480;
 	public static int SCALE = 3;
-	public Player player;
+	public static Player player;
 	public World world;
+	public List<Enemy> enemies = new ArrayList<>();
 
 	public Game() {
 		this.addKeyListener(this);
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+
 		player = new Player(32, 32);
+		enemies.add(new Enemy(64, 64));
+		enemies.add(new Enemy(33, 80));
+
 		world = new World();
+
 		new Spritesheet();
 	}
 
@@ -41,6 +49,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
 	public void tick() {
 		player.tick();
+
+		for (Enemy enemy : enemies) {
+			enemy.tick();
+		}
 	}
 
 	public void render() {
@@ -56,6 +68,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
 		world.render(g);
 		player.render(g);
+
+		for (Enemy enemy : enemies) {
+			enemy.render(g);
+		}
 
 		bs.show();
 	}
@@ -111,6 +127,5 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		else if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S)
 			player.down = false;
 	}
-	
 
 }

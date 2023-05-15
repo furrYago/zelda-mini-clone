@@ -19,6 +19,8 @@ public class World {
 			obstacles.add(new Obstacle(0, yy * 32));
 			obstacles.add(new Obstacle(608, yy * 32));
 		}
+		
+		obstacles.add(new Obstacle(120, 80));
 
 	}
 
